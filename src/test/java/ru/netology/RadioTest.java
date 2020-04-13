@@ -10,91 +10,90 @@ class RadioTest {
     @ParameterizedTest
     @CsvSource(
             value= {
-                    "1,2",
-                    "0,1",
-                    "10,0",
-                    "20,0",
-                    "9,0",
-                    "-3,1"
+                    "'set correct station',1,2",
+                    "'set min station',0,1",
+                    "'set station is higher than maximum',20,0",
+                    "'set max station',9,0",
+                    "'set station below minimum',-3,1"
             }
     )
 
-    public void nextNumberStation(int setRadioStation, int expected) {
+    public void nextNumberStation(String message, int setRadioStation, int expected) {
         Radio radio = new Radio();
         radio.setNumberStation(setRadioStation);
         radio.increaseNumberStation();
-        assertEquals(expected, radio.getNumberStation());
+        assertEquals(expected, radio.getNumberStation(), message);
     }
 
     @ParameterizedTest
     @CsvSource(
             value= {
-                    "1,0",
-                    "0,9",
-                    "10,8",
-                    "20,8",
-                    "9,8"
+                    "'set correct station',1,0",
+                    "'set min station',0,9",
+                    "'set station is higher than maximum',10,8",
+                    "'set station below minimum',-3,9",
+                    "'set max station',9,8"
             }
     )
 
-    public void prevNumberStation(int setRadioStation, int expected) {
+    public void prevNumberStation(String message, int setRadioStation, int expected) {
         Radio radio = new Radio();
         radio.setNumberStation(setRadioStation);
         radio.decreaseNumberStation();
-        assertEquals(expected, radio.getNumberStation());
+        assertEquals(expected, radio.getNumberStation(), message);
     }
 
     @ParameterizedTest
     @CsvSource(
             value= {
-                    "1,1",
-                    "5,5",
-                    "9,9",
-                    "-3,0",
-                    "15,9"
+                    "'set min correct station',0,0",
+                    "'set middle orrect station',5,5",
+                    "'set max correct station',9,9",
+                    "'set station below minimum',-3,0",
+                    "'set station is higher than maximum',15,9"
             }
     )
 
-    public void setNumberStationManual(int setRadioStation, int expected) {
+    public void setNumberStationManual(String message, int setRadioStation, int expected) {
         Radio radio = new Radio();
         radio.setNumberStation(setRadioStation);
-        assertEquals(expected, radio.getNumberStation());
+        assertEquals(expected, radio.getNumberStation(), message);
     }
 
     @ParameterizedTest
     @CsvSource(
             value= {
-                    "0,1",
-                    "5,6",
-                    "10,10",
-                    "-3,1",
-                    "20,10"
+                    "'set min volume',0,1",
+                    "'set middle volume',5,6",
+                    "'set max volume',10,10",
+                    "'set volume below minimum',-3,1",
+                    "'set volume is higher than maximum',20,10"
             }
     )
 
-    public void upVolume(int setVolume, int expected) {
+    public void upVolume(String message, int volume, int expected) {
         Radio radio = new Radio();
-        radio.setVolume(setVolume);
+        radio.setVolume(volume);
         radio.increaseVolume();
-        assertEquals(expected, radio.getVolume());
+        assertEquals(expected, radio.getVolume(), message);
     }
 
     @ParameterizedTest
     @CsvSource(
             value= {
-                    "0,0",
-                    "5,4",
-                    "10,9",
-                    "-3,0",
-                    "20,9"
+                    "'set min volume',0,0",
+                    "'set middle volume',5,4",
+                    "'set max volume',10,9",
+                    "'set volume below minimum',-3,0",
+                    "'set volume is higher than maximum',20,9"
             }
     )
 
-    public void downVolume(int setVolume, int expected) {
+    public void downVolume(String message, int volume, int expected) {
         Radio radio = new Radio();
-        radio.setVolume(setVolume);
+        radio.setVolume(volume);
         radio.decreaseVolume();
-        assertEquals(expected, radio.getVolume());
+        assertEquals(expected, radio.getVolume(), message);
     }
 
 }

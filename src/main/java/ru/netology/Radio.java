@@ -40,22 +40,6 @@ public class Radio {
         this.numberStation = numberStation;
     }
 
-    /*public int getMaxNumberStation() {
-        return maxNumberStation;
-    }
-
-    public void setMaxNumberStation(int maxNumberStation) {
-        this.maxNumberStation = maxNumberStation;
-    }
-
-    public int getMinNumberStation() {
-        return minNumberStation;
-    }
-
-    public void setMinNumberStation(int minNumberStation) {
-        this.minNumberStation = minNumberStation;
-    }*/
-
     public void increaseVolume() {
         if (volume == maxVolume) {
             return;
@@ -88,19 +72,4 @@ public class Radio {
         this.volume = volume;
     }
 
-    /*public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }*/
 }
